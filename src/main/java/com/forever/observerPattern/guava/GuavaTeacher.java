@@ -1,7 +1,5 @@
 package com.forever.observerPattern.guava;
 
-import com.forever.observerPattern.gper.GPer;
-import com.forever.observerPattern.gper.Question;
 import com.google.common.eventbus.Subscribe;
 
 /**
@@ -13,20 +11,13 @@ public class GuavaTeacher {
 
     private String name;
 
-    public GuavaTeacher(GPer gper){
-
+    public GuavaTeacher(String name){
+        this.name = name;
     }
 
     @Subscribe
-    public void notice(Question question){
-        System.out.println("老师，你好！您收到信息");
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void notice(GuavaGPer gPer){
+        System.out.println(name+"老师，你好！您的学生在"+gPer.getName()+"上收到信息:\n" +
+                "消息的内容是："+gPer.getQuestion().getContent()+"\n来自："+gPer.getQuestion().getAskerName());
     }
 }

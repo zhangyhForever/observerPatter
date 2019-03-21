@@ -1,11 +1,6 @@
 package com.forever.observerPattern.guava;
 
 import com.forever.observerPattern.gper.Question;
-import com.forever.observerPattern.gper.Teacher;
-import com.google.common.eventbus.Subscribe;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @ Author       : forever
@@ -37,9 +32,11 @@ public class GuavaGPer {
         return name;
     }
 
-    public void publish(Question question){
-        System.out.println("================================================");
-        System.out.println(question.getAskerName()+"在"+gper.getName()+"上发布了一个问题：" +
-                "\n问题的内容是："+question.getContent());
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

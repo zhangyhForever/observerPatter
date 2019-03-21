@@ -12,13 +12,17 @@ public class GuavaTest {
 
     public static void main(String[] args) {
         EventBus event = new EventBus();
-        GuavaTeacher teacher = new GuavaTeacher(event);
-        teacher.setName("forever");
         GuavaGPer gper = GuavaGPer.getInstance();
-        event.register(gper);
         Question question = new Question();
         question.setAskerName("小明");
         question.setContent("guava怎么用啊？");
-        event.post(question);
+        gper.setQuestion(question);
+        GuavaTeacher teacher = new GuavaTeacher("tom");
+
+        //老师订阅
+        event.register(teacher);
+
+        //在gper上发布，老师就能收到通知
+        event.post(gper);
     }
 }
